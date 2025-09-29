@@ -1,1 +1,0 @@
-Extract the WSDL file from the terminal (Settings/Balance/General/More/Export web service WSDL file) to a USB stick and check the version number of the WSDL file. Then use the example solution from the appropriate folder.

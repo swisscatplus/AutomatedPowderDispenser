@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AutomatedPowderDispenser.iml" filepath="$PROJECT_DIR$/.idea/AutomatedPowderDispenser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CODEPYTHON.iml" filepath="$PROJECT_DIR$/.idea/CODEPYTHON.iml" />
     </modules>
   </component>
 </project>

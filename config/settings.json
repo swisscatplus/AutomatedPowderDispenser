@@ -1,0 +1,15 @@
+{
+  "ur": {
+    "ip_address": "192.168.0.5",
+    "timeout_ms": 15000,
+    "verbose": true
+  },
+  "wm": {
+    "port": "COM5",
+    "baudrate": 9600,
+    "timeout": 1.0
+  },
+  "general": {
+    "recipes_dir": "./recipes"
+  }
+}

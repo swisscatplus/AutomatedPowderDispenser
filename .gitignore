@@ -7,3 +7,7 @@
 # Autres fichiers courants à ignorer
 __pycache__/
 *.pyc
+
+# Dossier de production
+production/
+#CAO/

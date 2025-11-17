@@ -7,11 +7,13 @@ import argparse
 import json
 import time
 import sys
-from automated_arm.Class_WM import WM   # import propre si ton fichier est "Class_WM.py"
+import os
+from automated_arm.Class_WM import WM
 import serial
 
 
 def load_config(path: str) -> dict:
+    """Charge un fichier JSON et renvoie son contenu."""
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
@@ -20,12 +22,19 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--config", "-c",
-        default="config/settings.json",   # chemin corrigé
-        help="Fichier JSON de config"
+        default="config/settings.json",
+        help="Fichier JSON de config (chemin relatif au dossier racine du projet)"
     )
     args = parser.parse_args()
 
-    cfg = load_config(args.config)
+    project_root = os.path.dirname(os.path.dirname(__file__))
+    config_path = os.path.join(project_root, args.config)
+
+    print(f"Chargement config depuis : {config_path}")
+
+    cfg = load_config(config_path)
+
+    # Récupération des infos de config
     wm_cfg = cfg.get("wm", {})
     port = wm_cfg.get("port", "COM5")
     baud = wm_cfg.get("baudrate", 9600)
@@ -46,16 +55,6 @@ def main():
         except Exception as e:
             print("reset échoué :", e)
 
-        """print("\n--- Test OUVERTURE PORTE ---")
-        try:
-            r = bal.open_door()
-            print("open_door ->", repr(r))
-        except Exception as e:
-            print("open_door échoué :", e)
-
-
-        time.sleep(1.0)"""
-
         print("\n--- TARE ---")
         try:
             r = bal.tare()
@@ -64,39 +63,6 @@ def main():
             print("tare échoué :", e)
 
         time.sleep(1.0)
-
-        """print("\n--- ZERO ---")
-        try:
-            r = bal.zero()
-            print("zero ->", repr(r))
-        except Exception as e:
-            print("zero échoué :", e)
-
-        time.sleep(1.0)
-
-        print("\n--- LECTURE POIDS ---")
-        try:
-            w = bal.get_weight()
-            print("weight ->", w)
-        except Exception as e:
-            print("get_weight échoué :", e)
-
-        print("\n--- TEST A10 (target + tol) ---")
-        try:
-            print("set target 5 mg ->", bal.set_target_weight(5, "mg"))
-            print("set tol upper 2% ->", bal.set_tolerance_upper(2, "%"))
-            print("set tol lower 1% ->", bal.set_tolerance_lower(1, "%"))
-        except Exception as e:
-            print("A10 failed :", e)
-
-        time.sleep(1.0)
-
-        print("\n--- Test FERMETURE PORTE ---")
-        try:
-            r = bal.close_door()
-            print("close_door ->", repr(r))
-        except Exception as e:
-            print("close_door échoué :", e)"""
 
     finally:
         print("\nFermeture du port série")

@@ -1,0 +1,17 @@
+{
+  "vials": [
+    {
+      "vial_id": "E1-1",
+      "powders": [
+        { "name": "NAHCO3", "qty_mg": 1.0 },
+        { "name": "CouCou Edy",   "qty_mg": 1.0 }
+      ]
+    },
+    {
+      "vial_id": "E1-2",
+      "powders": [
+        { "name": "CouCou Louis", "qty_mg": 1.5 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "vials": [
+    {
+      "vial_id": "E3-2",
+      "powders": [
+        { "name": "Pow1", "qty_mg": 5.0 }
+      ]
+    },
+    {
+      "vial_id": "E2-2",
+      "powders": [
+        { "name": "Pow1", "qty_mg": 2.5 }
+      ]
+    }
+  ]
+}
